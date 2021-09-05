@@ -6,7 +6,7 @@ public class TrieTest {
     
     public static void main(String[] args) {
         
-        // Creer a trie and addd the following words:
+        // created a trie and addd the following words:
         // house, car, backyard, kitchen, bathroom
 
         Trie mytrie = new TrieImpl();
@@ -34,7 +34,7 @@ public class TrieTest {
         // delete house
         mytrie.delete("backyard");
 
-        // look up house
+        // look up backyard
         yours = "";
         expected = "false";
         found = mytrie.search("backyard");
