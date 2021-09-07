@@ -1,4 +1,4 @@
-package src.api.solutions;
+package src.api.tests;
 
 import java.util.*;
 

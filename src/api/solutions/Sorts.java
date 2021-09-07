@@ -1,5 +1,9 @@
 package src.api.solutions;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.IntStream;
+
 public class Sorts {
     
     static public int[] mergeSort(int[] nb){
@@ -39,7 +43,7 @@ public class Sorts {
                 aIdx++;
                 continue;
             }
-            if(A[aIdx] < B[bIdx]){
+            if(bIdx == B.length || A[aIdx] < B[bIdx]){
                 result[i] = A[aIdx];
                 aIdx++;
             }else{
@@ -51,11 +55,73 @@ public class Sorts {
         return result;
     }
 
-    void quickSort(int[] nb){
-
+    static public void quickSort(int[] nb){
+        quickSort(nb, 0, nb.length-1);
     }
 
-    void searchSortedArray(int[] nb){
+    static private void quickSort(int[] nb, int start, int end){
 
+        if(start >= end) return;
+        int left = partition(nb, start, end);
+        quickSort(nb, start, left-1);
+        quickSort(nb, left+1, end);
+    }
+
+    static private int partition(int nb[], int start, int end){
+        int pivot = nb[start];
+        int left = start+1;
+        int right = end;
+
+        while(left < right){
+            if(nb[left]>pivot){
+                swap(nb, left, right);
+                right--;
+            }else{
+                left++;
+            }
+        }
+
+        if(nb[left] > pivot)
+            left--;
+        swap(nb, start, left);
+        return left;
+    }
+
+    static private void swap(int[] nb, int s, int e){
+        int n = nb[s];
+        nb[s] = nb[e];
+        nb[e] = n;
+    }
+
+    public static int[][] sort2RelativeArrays(int[] A, int[] B){
+        // Sort according to the 1st array while keeping the 2nd one in line with the 1st one.
+        int[][] combined = new int[A.length-1][2]; 
+        IntStream.range(0, A.length-1).forEach(x -> {
+            combined[x][0] = A[x];
+            combined[x][1] = B[x];
+        });
+        Arrays.sort(combined, new Comparator<int[]>(){
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            };
+        });
+        return combined;
+    }
+
+    static public int  searchSortedArray(int[] nb, int v){
+
+        int left = 0;
+        int right = nb.length-1;
+
+        while(left <= right){
+            int mid = (right -left)/2 + left;
+            int current = nb[mid];
+            if(current == v) return mid;
+            if(nb[mid] > v)
+                right = mid-1;
+            else
+                left = mid+1;
+        }
+        return -1;
     }
 }
