@@ -6,11 +6,6 @@ import src.api.util.TestAPIUtil;
 
 public class TreeSetAPITest {
 
-    
-    // CORE APIs
-    // crud: add , addall , pollfirst , polllast , remove , 
-    // search: ceiling , floor , higher , lower , comparator , contains
-    // browsing: first , last , iterator , descendingIterator , size
     public static void main(String[] args) {
         // create a treeset of integer with : 3, 4, 6, 1, 2
         // print the first element
