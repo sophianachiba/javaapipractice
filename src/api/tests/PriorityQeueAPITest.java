@@ -5,8 +5,6 @@ import src.api.util.TestAPIUtil;
 public class PriorityQeueAPITest {
     public static void main(String[] args){
     
-        // Core Methods:
-        // add, peek, poll, size
         String yours = "";
         String expected = "";
         // create a Priority Queue and add 5 4 3 2 1

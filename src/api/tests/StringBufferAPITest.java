@@ -1,19 +1,16 @@
-package src.api.solutions;
+package src.api.tests;
 
-import java.util.stream.IntStream;
 
 import src.api.util.TestAPIUtil;
 
 public class StringBufferAPITest {
     
 
-    // Core API 
-    // new StringBuffer() , append , charAt , delete , reverse, substring,
     static public void main(String[] arg){
     
-        // create a strinbuffer add the following: 
-        //5 
-        //" tests a days" 
+        // create a strinbuffer add the following 2 elements: 
+        //  5 
+        //  " tests a days" 
         String yours = "";
         String expected ="5 tests a days";
 

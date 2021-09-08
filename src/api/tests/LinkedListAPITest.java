@@ -6,9 +6,6 @@ import src.api.util.TestAPIUtil;
 
 public class LinkedListAPITest {
     
-    //CORE API
-    // Add, AddFirst, DescendingIterator, getFirst, getLast, remove, removelast
-    // size
 
     static public void main(String[] arg){
 

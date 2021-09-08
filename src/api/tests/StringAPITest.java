@@ -4,8 +4,6 @@ import src.api.util.TestAPIUtil;
 
 public class StringAPITest {
     
-    //CORE API
-    // charAt, compareTo, indexof(string), length, split, subString(start, end), toLowercase
     static public void main(String[] arg){
 
         // print the 3rd character in "mytest"

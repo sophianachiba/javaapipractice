@@ -1,4 +1,4 @@
-package src.api.solutions;
+package src.api.tests;
 
 import java.util.*;
 
@@ -6,10 +6,6 @@ import src.api.util.TestAPIUtil;
 
 public class TreeMapAPITest {
     
-    //CORE APIs
-    // crud: put c, putall , pollfirstentry c, polllastentry c, remove c
-    // search: ceilingkey c, floorkey c, higherkey c, lowerkey c, comparator, containskey c
-    // browsing: firstkey c, lastkey c, get c, size cc
     public static void main(String[] args) {
 
     // given the following words and definition build a dcitionnary.
