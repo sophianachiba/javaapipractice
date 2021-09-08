@@ -17,10 +17,10 @@ public class StackAPITest {
         expected = "3";
 
         TestAPIUtil.assertValue(yours, expected);
-        // add all element in the stack
+        // add up all element in the stack together
         yours = "";
         expected = "6";
-
+ 
         TestAPIUtil.assertValue(yours, expected);
     }
 

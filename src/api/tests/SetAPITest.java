@@ -7,8 +7,6 @@ import src.api.util.TestAPIUtil;
 public class SetAPITest {
     public static void main(String[] args){
     
-        // Core Methods:
-        // add, contains, iterator, remove, size
         String yours = "";
         String expected = "";
 
@@ -22,8 +20,6 @@ public class SetAPITest {
         // look for 3 and then 4
         yours = "";
         expected ="true false";
-
-        TestAPIUtil.assertValue(yours, expected);
 
         // delete 1 and 2 and print the new size
         yours = "";
