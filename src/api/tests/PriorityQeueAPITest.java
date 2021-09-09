@@ -44,7 +44,7 @@ public class PriorityQeueAPITest {
         int[] hourlyCost = {4, 5, 10, 6};
         int[] nbofHours = {3, 2, 1, 3};
         yours = "";
-        expected ="20 3"; // $36 and 8h job
+        expected ="20 3"; // $20 and 3h job
 
         TestAPIUtil.assertValue(yours, expected);
 
