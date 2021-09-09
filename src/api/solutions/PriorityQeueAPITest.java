@@ -1,8 +1,7 @@
 package src.api.solutions;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.*;
 
 import src.api.util.TestAPIUtil;
 
@@ -72,11 +71,7 @@ public class PriorityQeueAPITest {
         yours = "";
         expected ="4 3 1 ";
 
-        q = new PriorityQueue<>(new Comparator<Integer>(){
-            public int compare(Integer i1 , Integer i2){
-                return i2 - i1;
-            }
-        });
+        q = new PriorityQueue<>(Collections.reverseOrder());
 
         for(int nb : inputs){
             if(q.size() == 3){
@@ -100,44 +95,32 @@ public class PriorityQeueAPITest {
         int[] hourlyCost = {4, 5, 10, 6};
         int[] nbofHours = {3, 2, 1, 3};
         yours = "";
-        expected ="20 3"; // $36 and 8h job
+        expected ="20 3"; // $20 and 3h job
 
-        int[][] hoursAndCost = new int[hourlyCost.length][2];
+        Integer[][] totalCost = new Integer[hourlyCost.length][2];
+        IntStream.range(0,hourlyCost.length).forEach(x -> {
+            totalCost[x][0] = hourlyCost[x] * nbofHours[x];
+            totalCost[x][1] = nbofHours[x];
+        });
 
-        for(int i=0; i<hourlyCost.length; i++){
-                hoursAndCost[i][0] = hourlyCost[i];
-                hoursAndCost[i][1] = nbofHours[i];
-        }
-
-        Queue<int[]> cost = new PriorityQueue<>(new Comparator<int[]>(){
-            public int compare(int[] o1, int[] o2){
-                return o2[0]*o2[1] - o1[0]*o1[1];
-            }});
-
-        for(int[] nb : hoursAndCost){
-            if(cost.size() == 2){
-                int maxcost = cost.peek()[0] * cost.peek()[1];
-                int currentcost = nb[0] * nb[1];
-                if(maxcost > currentcost){
-                    cost.poll();
-                    cost.add(nb);
-                }
-            }else{
-                cost.add(nb);
+        PriorityQueue<Integer[]> costRank = new PriorityQueue<Integer[]>(hourlyCost.length, new Comparator<Integer[]>(){
+            public int compare(Integer[] o1, Integer[]o2){
+                return o1[0] - o2[0];
             }
-        }
-        
-        int totalcost = 0;
-        int totalhours = 0;
-        System.out.println(cost.size());
-        while(cost.size() > 0){
-            int[] hc = cost.poll();
-            System.out.println(hc[0] + " " + hc[1]);
-            totalcost += hc[0]*hc[1];
-            totalhours += hc[1];
-        }
+        });
 
-        yours += totalcost + " " + totalhours;
+        for(Integer cost[] : totalCost)
+            costRank.add(cost);
+
+        Integer[] costHour = {0,0};
+
+        IntStream.range(0,2).forEach( x ->{
+            Integer[] cost = costRank.poll();
+            costHour[0] += cost[0];
+            costHour[1] += cost[1];
+        });
+
+        yours += costHour[0] + " " + costHour[1];
         TestAPIUtil.assertValue(yours, expected);
 
     }
