@@ -64,7 +64,7 @@ public class LinkedListAPITest {
 
         TestAPIUtil.assertValue(yours, expected);
 
-        // delete head and print the new tail
+        // delete tail and print the new tail
         yours = "";
         expected = "2";
 

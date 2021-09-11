@@ -31,28 +31,16 @@ public class DoubleEndedQueueAPITest {
         TestAPIUtil.assertValue(yours, expected);
         // add the following at the end of the qeueue: 1, 2
         // print the queue from the back
-        // q= 3->4
         yours="";
         expected = "2 1 ";
         q.add(1); // Q = 1
         q.add(2); // Q = 2 -> 1
 
         while(!q.isEmpty()){
-            yours += q.poll() +" ";
+            yours += q.pollLast() +" ";
         }
         TestAPIUtil.assertValue(yours, expected);
 
-        // add the following at the front of the queue: 1, 2
-        // print the queue from the front
-        yours="";
-        expected = "2 1 ";
-        q.addFirst(1); // Q = 1
-        q.addFirst(2); // Q = 1 -> 2
-        // q= 1 -> 2
-        while(!q.isEmpty()){
-            yours += q.poll() +" ";
-        }
-        TestAPIUtil.assertValue(yours, expected);
 
         // add the following at the front of the queue: 1, 2
         // print the queue from the back
